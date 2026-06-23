@@ -148,8 +148,8 @@ export default function Taskbar({ activeApp, onSelectApp }: TaskbarProps) {
         )}
       </AnimatePresence>
 
-      {/* START BUTTONS (Left-aligned or Windows Centered - let's make it styled in a beautiful modern bar) */}
-      <div className="flex items-center space-x-1">
+      {/* START BUTTONS (Left-aligned) */}
+      <div className="flex items-center">
         {/* Start Button */}
         <button
           onClick={() => setStartMenuOpen(!startMenuOpen)}
@@ -166,11 +166,6 @@ export default function Taskbar({ activeApp, onSelectApp }: TaskbarProps) {
             <span className="bg-[#2e96ff] rounded-[1px]" />
             <span className="bg-[#2e96ff] rounded-[1px]" />
           </div>
-        </button>
-
-        {/* Search button */}
-        <button className="h-10 w-10 flex items-center justify-center rounded hover:bg-slate-800/50 text-slate-400 active:scale-95 transition-all">
-          <Search size={18} />
         </button>
       </div>
 
@@ -236,10 +231,6 @@ export default function Taskbar({ activeApp, onSelectApp }: TaskbarProps) {
 
       {/* SYSTEM TRAY (Right-aligned) */}
       <div className="flex items-center space-x-3 text-slate-400">
-        <div className="flex items-center space-x-2 border-r border-slate-800 pr-3 text-xs">
-          <Wifi size={14} className="text-slate-400" />
-          <Volume2 size={14} className="text-slate-400" />
-        </div>
         <div className="flex flex-col items-end leading-none">
           <span className="text-xs font-semibold text-slate-200">{formatClock(time)}</span>
           <span className="text-[10px] text-slate-400 mt-0.5">{formatDate(time)}</span>
