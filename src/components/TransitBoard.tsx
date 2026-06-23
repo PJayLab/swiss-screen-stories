@@ -49,10 +49,11 @@ export default function TransitBoard() {
   };
 
   // Fetch live timetables from public Swiss transport board
-  const loadLiveSBBDepartures = async (silent = false) => {
+  const loadLiveSBBDepartures = async (silent : boolean = false, station : string = '') => {
     try {
       if (!silent) setLoading(true);
-      const response = await fetch('/api/transit?station=Zürich HB');
+      const selectedStation = station?.trim() || 'Zürich HB';
+      const response = await fetch(`/api/transit?station=${encodeURIComponent(selectedStation)}`);
       if (!response.ok) throw new Error('CFF/SBB timetable proxy error');
       const data = await response.json();
       if (data.departures && data.departures.length > 0) {
@@ -75,7 +76,10 @@ export default function TransitBoard() {
     const params = new URLSearchParams(window.location.search);
     setIsDisplayMode(params.get('mode') === 'display');
 
-    loadLiveSBBDepartures();
+    // Check if station query param is supplied (e.g., ?station=Bern)
+    const stationParam = params.get('station');
+
+    loadLiveSBBDepartures(false, stationParam ?? '');
 
     // Constant clock ticking & automatic minute reload
     const clockTimer = setInterval(() => {
