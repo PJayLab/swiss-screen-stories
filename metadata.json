@@ -1,0 +1,6 @@
+{
+  "name": "Swiss Screen Stories",
+  "description": "An elegant public screen dashboard presenting news stories, local weather, and SBB transit schedules, controlled via a Windows-style taskbar and URL queries.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
